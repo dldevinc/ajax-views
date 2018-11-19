@@ -37,6 +37,8 @@ Usage
 
 **@ajax_view decorator**
 ```python
+from ajax_views.decorators import ajax_view
+
 @ajax_view(name='myapp.form')
 def form_view(request):
     ...
@@ -76,6 +78,10 @@ $.ajax({
 
 **Combining with others decorators**
 ```python
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
+from ajax_views.decorators import ajax_view
+
 @ajax_view('myapp.form')
 @csrf_exempt
 def form_view(request):
