@@ -1,2 +1,2 @@
-# ajax_views
+# ajax-views
 A simple AJAX framework for Django
