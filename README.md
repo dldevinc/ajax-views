@@ -84,7 +84,7 @@ $.ajax({
 });
 ```
 
-#### Combining with others decorators
+#### Combining with other decorators
 ```python
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
@@ -102,16 +102,24 @@ class AjaxFormView(FormView):
 ```
 
 ## Jinja2 support
-Make sure you have the [jinja2](http://jinja.pocoo.org/) package installed.
-
-#### Export URLs from Django to JavaScript
-```jinja2
-<script>
-    window.ajax_views = {% ajax_views_json %};
-</script>
+Enable Jinja2 extension
+```python
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.jinja2.Jinja2',
+        'OPTIONS': {
+            'extensions': [
+                ...
+                'ajax_views.templatetags.ajax_views.AjaxViewsExtension',
+            ]
+        }
+    }
+]
 ```
 
-#### {{ ajax_url(...) }}
+**NOTE**: If you are using [django-jinja](https://niwinz.github.io/django-jinja/latest/), you don't need to do this.
+
+The usage is similar to Django, except `ajax_url` - it is global function:
 ```jinja2
 <form action="{{ ajax_url('myapp.form') }}" method="post">
     ...

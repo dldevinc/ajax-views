@@ -58,12 +58,11 @@ if jinja2 is not None:
         def _ajax_views_json(caller):
             return registry_to_json()
 
-    # Support django-jinja
-    # https://github.com/niwinz/django-jinja
+    # django-jinja support
     try:
-        from django_jinja.library import extension, global_function
+        from django_jinja import library
     except ImportError:
         pass
     else:
-        global_function(name='ajax_url')(do_ajax_url)
-        extension(AjaxViewsExtension)
+        library.global_function(name='ajax_url')(do_ajax_url)
+        library.extension(AjaxViewsExtension)
