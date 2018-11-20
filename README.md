@@ -2,7 +2,7 @@
 A simple Django application to easily use AJAX views with JavaScript.
 
 ## Compatibility
-* `django` >= 1.8, <=2.1
+* `django` >= 1.8
 * `python` >= 3.3
 
 ## Features
@@ -15,7 +15,7 @@ A simple Django application to easily use AJAX views with JavaScript.
 Install the package via Pip:
 
 ```
-pip install git+git://github.com/dldevinc/ajax-views@v0.1.1#egg=ajax_views
+pip install ajax-views
 ```
 
 Add it to your `INSTALLED_APPS` list:

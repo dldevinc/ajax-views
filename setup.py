@@ -13,7 +13,7 @@ from setuptools import find_packages, setup, Command
 
 # Package meta-data.
 NAME = 'ajax-views'
-DESCRIPTION = 'A simple AJAX framework for Django.'
+DESCRIPTION = 'A simple Django application to easily use AJAX views with JavaScript.'
 URL = 'https://github.com/dldevinc/ajax-views'
 EMAIL = 'x896321475@gmail.com'
 AUTHOR = 'Mihail Mishakin'
