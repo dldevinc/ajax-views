@@ -55,7 +55,7 @@ def form_view(request):
 class AjaxFormView(FormView):
     ...
 ```
-Each view must have a **unique** name.
+**NOTE**: Each view must have a **unique** name.
 
 #### {% ajax_url %}
 ```djangotemplate
@@ -76,7 +76,6 @@ Template tag to render registered URLs as JSON.
 </script>
 ```
 
-#### ... and use them
 ```javascript
 $.ajax({
     url: window.ajax_views.myapp.form,
@@ -85,19 +84,29 @@ $.ajax({
 ```
 
 #### Combining with other decorators
+`@ajax_view` should be called **after** all decorators that returns a new function (such as `csrf_exempt`).
 ```python
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from ajax_views.decorators import ajax_view
 
-@ajax_view('myapp.form')
+@ajax_view('example.fbv')
 @csrf_exempt
-def form_view(request):
+def example_view(request):
     ...
 
-@ajax_view('myapp.form_cbv')
+@ajax_view('example.cbv')
 @method_decorator(csrf_exempt, name='dispatch')
-class AjaxFormView(FormView):
+class ExampleView(View):
+    ...
+```
+
+#### Multiple names for same view
+```python
+from ajax_views.decorators import ajax_view
+
+@ajax_view(['myapp.form', 'myapp.fallback'])
+def example_view(request):
     ...
 ```
 
