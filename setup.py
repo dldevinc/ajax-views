@@ -27,7 +27,10 @@ REQUIRED = [
 
 # What packages are optional?
 EXTRAS = {
-    'jinja2': ['jinja2', 'django_jinja'],
+    'optional': [
+        'jinja2',
+        'django_jinja'
+    ],
 }
 
 # The rest you shouldn't have to touch too much :)
@@ -114,21 +117,18 @@ setup(
     include_package_data=True,
     license='MIT',
     classifiers=[
-        # Trove classifiers
-        # Full list: https://pypi.python.org/pypi?%3Aaction=list_classifiers
+        'Development Status :: 4 - Beta',
+        'Environment :: Web Environment',
+        'Framework :: Django',
+        'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
+        'Operating System :: OS Independent',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.4',
-        'Programming Language :: Python :: 3.5',
-        'Programming Language :: Python :: 3.6',
-        'Framework :: Django',
-        'Environment :: Web Environment',
-        'Intended Audience :: Developers',
-        'Operating System :: OS Independent',
-
+        'Topic :: Internet :: WWW/HTTP',
+        'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
+        'Topic :: Software Development :: Libraries :: Python Modules',
     ],
-    # $ setup.py publish support.
     cmdclass={
         'upload': UploadCommand,
     },

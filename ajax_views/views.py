@@ -3,7 +3,6 @@ from .registry import registry
 
 
 def router(request, name, *args, **kwargs):
-    view = registry.get(name)
-    if view is None:
+    if name not in registry:
         return HttpResponseNotFound()
-    return view(request, *args, **kwargs)
+    return registry.get(name)(request, *args, **kwargs)
