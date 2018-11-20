@@ -17,7 +17,7 @@ DESCRIPTION = 'A simple AJAX framework for Django.'
 URL = 'https://github.com/dldevinc/ajax-views'
 EMAIL = 'x896321475@gmail.com'
 AUTHOR = 'Mihail Mishakin'
-REQUIRES_PYTHON = '>=3.4.0'
+REQUIRES_PYTHON = '>=3.3.0'
 VERSION = '0.1.1'
 
 # What packages are required for this module to be executed?
