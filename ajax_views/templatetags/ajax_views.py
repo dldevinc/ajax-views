@@ -1,8 +1,12 @@
 import logging
-from django.urls import reverse
-from django.template.library import Library
+from django.template import Library
 from django.utils.safestring import mark_safe
 from ..registry import registry
+
+try:
+    from django.urls import reverse
+except ImportError:
+    from django.core.urlresolvers import reverse
 
 try:
     import jinja2
