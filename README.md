@@ -15,7 +15,7 @@ A simple Django application to easily use AJAX views with JavaScript.
 Install the package via Pip:
 
 ```
-pip install git+git://github.com/dldevinc/ajax-views@v0.1.0#egg=ajax_views
+pip install git+git://github.com/dldevinc/ajax-views@v0.1.1#egg=ajax_views
 ```
 
 Add it to your `INSTALLED_APPS` list:
