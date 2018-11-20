@@ -2,12 +2,12 @@ import re
 from inspect import isclass, isfunction
 from .registry import registry
 
-name_regex = re.compile(r'[-\w.]+')
+name_regex = re.compile(r'[-\w:.]+')
 
 
 def ajax_view(name):
     def decorator(view):
-        if isclass(view):   # CBV
+        if isclass(view):
             view = view.as_view()
         elif isfunction(view):
             pass

@@ -40,5 +40,5 @@ else:
 
 app_name = 'ajax_views'
 urlpatterns = [
-    ajax_url('(?P<name>[-\w.]+)/', views.router, name='router'),
+    ajax_url('(?P<name>[-\w.:]+)/', views.router, name='router'),
 ]
