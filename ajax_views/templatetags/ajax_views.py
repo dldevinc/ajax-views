@@ -1,8 +1,13 @@
+import json
 import logging
-from django.urls import reverse
-from django.template.library import Library
+from django.template import Library
 from django.utils.safestring import mark_safe
 from ..registry import registry
+
+try:
+    from django.urls import reverse
+except ImportError:
+    from django.core.urlresolvers import reverse
 
 try:
     import jinja2
@@ -12,6 +17,17 @@ except ImportError:
 
 register = Library()
 logger = logging.getLogger('ajax_views')
+
+
+def registry_to_json():
+    data = {}
+    for name in registry:
+        path, _, key = name.rpartition('.')
+        target = data
+        for part in path.split('.'):
+            target = target.setdefault(part, {})
+        target[key] = reverse('ajax_views:router', args=[name])
+    return json.dumps(data)
 
 
 @register.simple_tag(name='ajax_url')
@@ -25,7 +41,7 @@ def do_ajax_url(name):
 
 @register.simple_tag(name='ajax_views_json')
 def ajax_views_json():
-    return mark_safe(registry.to_json())
+    return mark_safe(registry_to_json())
 
 
 if jinja2 is not None:
@@ -40,7 +56,7 @@ if jinja2 is not None:
 
         @staticmethod
         def _ajax_views_json(caller):
-            return registry.to_json()
+            return registry_to_json()
 
     # Support django-jinja
     # https://github.com/niwinz/django-jinja
