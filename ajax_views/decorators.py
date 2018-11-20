@@ -19,7 +19,7 @@ def _check_name(name):
 
 def ajax_view(name):
     def decorator(view):
-        if isinstance(view, View):
+        if issubclass(view, View):
             view = view.as_view()
         elif isfunction(view):
             pass
