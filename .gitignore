@@ -6,6 +6,7 @@ eggs/
 .idea/
 *.egg-info/
 *.egg
+*.pyc
 
 env/
 venv/
