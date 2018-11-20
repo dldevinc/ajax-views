@@ -11,7 +11,7 @@ Installation
 Install the package via Pip:
 
 ```
-pip install git+git://github.com/dldevinc/ajax-views#egg=ajax_views
+pip install git+git://github.com/dldevinc/ajax-views@v0.1.0#egg=ajax_views
 ```
 
 Add it to your `INSTALLED_APPS` list:
@@ -28,7 +28,12 @@ Add `ajax_views.urls` to your URLconf:
 ```python
 urlpatterns = patterns('',
     ...
-    url(r'^ajax/', include('ajax_views.urls')),
+    
+    # Django >= 2.0
+    path('ajax/', include('ajax_views.urls')),
+    
+    # Django < 2.0
+    url(r'^ajax/', include('ajax_views.urls', namespace='ajax_views')),
 )
 ```
 
