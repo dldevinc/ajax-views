@@ -132,4 +132,5 @@ setup(
     cmdclass={
         'upload': UploadCommand,
     },
+    keywords='django ajax jinja2 js',
 )
