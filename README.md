@@ -7,7 +7,7 @@ A simple Django application to easily use AJAX views with JavaScript.
 
 ## Features
 * Ability to expose your AJAX URLs to JavaScript
-* Support Function-Based and Class-Based Views
+* Supported Function-Based and Class-Based Views
 * One URL pattern ~~to rule them all~~ for all AJAX views
 * Jinja2 support
 
@@ -128,7 +128,7 @@ TEMPLATES = [
 
 **NOTE**: If you are using [django-jinja](https://niwinz.github.io/django-jinja/latest/), you don't need to do this.
 
-The usage is similar to Django, except `ajax_url` - it is global function:
+The usage is similar to Django, except that `ajax_url` is a global function:
 ```jinja2
 <form action="{{ ajax_url('myapp.form') }}" method="post">
     ...
