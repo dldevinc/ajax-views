@@ -1,5 +1,5 @@
 import re
-from inspect import isfunction
+from inspect import isfunction, isclass
 from django.views.generic import View
 from .registry import registry
 
@@ -18,7 +18,7 @@ def _check_name(name):
 
 def ajax_view(name):
     def decorator(view):
-        if issubclass(view, View):
+        if isclass(view) and issubclass(view, View):
             view = view.as_view()
         elif isfunction(view):
             pass
