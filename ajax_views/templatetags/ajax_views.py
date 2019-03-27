@@ -22,10 +22,11 @@ logger = logging.getLogger('ajax_views')
 def registry_to_json():
     data = {}
     for name in registry:
-        path, _, key = name.rpartition('.')
         target = data
-        for part in path.split('.'):
-            target = target.setdefault(part, {})
+        path, _, key = name.rpartition('.')
+        if path:
+            for part in path.split('.'):
+                target = target.setdefault(part, {})
         target[key] = reverse('ajax_views:router', args=[name])
     return json.dumps(data)
 

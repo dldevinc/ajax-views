@@ -1,7 +1,6 @@
 import re
 from inspect import isfunction
 from django.views.generic import View
-
 from .registry import registry
 
 name_regex = re.compile(r'[-\w:.]+')
