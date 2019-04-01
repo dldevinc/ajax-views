@@ -1,6 +1,4 @@
-import logging
-
-logger = logging.getLogger('ajax_views')
+from .logging import logger
 
 
 class Registry:

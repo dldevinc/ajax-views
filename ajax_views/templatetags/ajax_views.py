@@ -1,7 +1,7 @@
 import json
-import logging
 from django.template import Library
 from django.utils.safestring import mark_safe
+from ..logging import logger
 from ..registry import registry
 
 try:
@@ -16,7 +16,6 @@ except ImportError:
 
 
 register = Library()
-logger = logging.getLogger('ajax_views')
 
 
 def registry_to_json():
