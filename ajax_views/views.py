@@ -1,8 +1,13 @@
 from django.http import HttpResponseNotFound
+from .logging import logger
 from .registry import registry
 
 
 def router(request, name, *args, **kwargs):
-    if name not in registry:
+    try:
+        view = registry[name]
+    except KeyError:
+        logger.debug('Resolving "%s"...' % name)
         return HttpResponseNotFound()
-    return registry.get(name)(request, *args, **kwargs)
+    else:
+        return view(request, *args, **kwargs)
