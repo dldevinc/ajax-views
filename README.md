@@ -83,25 +83,7 @@ $.ajax({
 });
 ```
 
-#### Combining with other decorators
-`@ajax_view` should be called **after** all decorators that returns a new function (such as `csrf_exempt`).
-```python
-from django.utils.decorators import method_decorator
-from django.views.decorators.csrf import csrf_exempt
-from ajax_views.decorators import ajax_view
-
-@ajax_view('example.fbv')
-@csrf_exempt
-def example_view(request):
-    ...
-
-@ajax_view('example.cbv')
-@method_decorator(csrf_exempt, name='dispatch')
-class ExampleView(View):
-    ...
-```
-
-#### Multiple names for same view
+#### Multiple names for the same view
 ```python
 from ajax_views.decorators import ajax_view
 
