@@ -105,7 +105,7 @@ setup(
     author_email=EMAIL,
     python_requires=REQUIRES_PYTHON,
     url=URL,
-    packages=find_packages(exclude=('tests',)),
+    packages=['ajax_views'],
     # If your package is a single module, use this instead of 'packages':
     # py_modules=['mypackage'],
 
@@ -132,5 +132,5 @@ setup(
     cmdclass={
         'upload': UploadCommand,
     },
-    keywords='django ajax jinja2 js',
+    keywords='django ajax jinja2',
 )

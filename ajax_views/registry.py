@@ -38,10 +38,7 @@ class Registry:
         return iter(self._registry)
 
     def __getitem__(self, item):
-        value = self._registry[item]
-        if isinstance(value, str):
-            value = self._registry[item] = self.resolve(value)
-        return value
+        return self._registry[item]
 
     def register(self, names, view, **initkwargs):
         """
