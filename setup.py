@@ -17,8 +17,8 @@ DESCRIPTION = 'A simple Django application to easily use AJAX views with JavaScr
 URL = 'https://github.com/dldevinc/ajax-views'
 EMAIL = 'x896321475@gmail.com'
 AUTHOR = 'Mihail Mishakin'
-REQUIRES_PYTHON = '>=3.3.0'
-VERSION = '0.1.6'
+REQUIRES_PYTHON = '>=3.4.0'
+VERSION = '0.2.0'
 
 # What packages are required for this module to be executed?
 REQUIRED = [
