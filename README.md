@@ -47,11 +47,11 @@ Use this decorator to register your views (Function-Based or Class-Based).
 ```python
 from ajax_views.decorators import ajax_view
 
-@ajax_view(name='myapp.form')
+@ajax_view('myapp.form')
 def form_view(request):
     ...
 
-@ajax_view(name='myapp.form_cbv')
+@ajax_view('myapp.form_cbv')
 class AjaxFormView(FormView):
     ...
 ```
