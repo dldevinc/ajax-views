@@ -15,7 +15,7 @@ if django.VERSION >= (2, 0):
                 name = kwargs.pop('name')
                 if name not in registry:
                     return
-                view = registry.get(name)
+                view = registry[name]
                 return ResolverMatch(view, args, kwargs, self.pattern.name)
 
 
@@ -33,7 +33,7 @@ else:
                 name = kwargs.pop('name')
                 if name not in registry:
                     return
-                view = registry.get(name)
+                view = registry[name]
                 return ResolverMatch(view, (), kwargs, self.name)
 
     def ajax_url(regex, view, kwargs=None, name=None):
@@ -42,5 +42,5 @@ else:
 
 app_name = 'ajax_views'
 urlpatterns = [
-    ajax_url('(?P<name>[-\w.:]+)/', router, name='router'),
+    ajax_url(r'(?P<name>[-\w.]+)/', router, name='router'),
 ]
