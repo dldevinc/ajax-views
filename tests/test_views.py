@@ -71,11 +71,17 @@ class HTTPTest(TestCase):
         self.assertEqual(response.content, b'I stopped an old man along the way')
         self.assertEqual(response['Cache-Control'], 'max-age=0, no-cache, no-store, must-revalidate')
 
+    def test_csrf_exempt(self):
+        client = Client(enforce_csrf_checks=True)
+        response = client.post('/ajax/tests.csrf_exempt/')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.content, b'It\'s gonna take a lot to drag me away from you')
+
     def test_cbv(self):
         client = Client()
         get_response = client.get('/ajax/tests.simple_cbv/')
         self.assertEqual(get_response.status_code, 200)
-        self.assertEqual(get_response.content, b'It\'s gonna take a lot to drag me away from you')
+        self.assertEqual(get_response.content, b'There\'s nothing that a hundred men or more could ever do')
 
         head_response = client.head('/ajax/tests.simple_cbv/')
         self.assertEqual(head_response.status_code, 200)
