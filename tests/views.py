@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.views.generic import View
+from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.cache import never_cache
 from django.views.decorators.http import require_GET, require_POST
 from ajax_views.decorators import ajax_view
@@ -43,7 +44,14 @@ def another_multinamed_view(request):
     return HttpResponse(b'He turned to me as if to say: Hurry boy, it\'s waiting there for you')
 
 
+@csrf_exempt
+@require_POST
+@ajax_view('tests.csrf_exempt')
+def csrf_exempt_view(request):
+    return HttpResponse(b'It\'s gonna take a lot to drag me away from you')
+
+
 @ajax_view('tests.simple_cbv')
 class SimpleView(View):
     def get(self, request):
-        return HttpResponse(b'It\'s gonna take a lot to drag me away from you')
+        return HttpResponse(b'There\'s nothing that a hundred men or more could ever do')

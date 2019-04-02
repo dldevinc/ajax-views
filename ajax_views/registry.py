@@ -15,17 +15,25 @@ class LazyView:
         self.initkwargs = initkwargs
         self.view_func = None
 
+    def __getattr__(self, item):
+        if self.view_func is None:
+            self._resolve()
+        return getattr(self.view_func, item)
+
     def __call__(self, *args, **kwargs):
         if self.view_func is None:
-            view = import_string(self.path)
-            if isfunction(view):
-                self.view_func = view
-            elif isclass(view) and issubclass(view, View):
-                self.view_func = view.as_view(**self.initkwargs)
-            else:
-                raise TypeError(view)
-            logger.debug('View "%s" instantiated.' % self.path)
+            self._resolve()
         return self.view_func(*args, **kwargs)
+
+    def _resolve(self):
+        view = import_string(self.path)
+        if isfunction(view):
+            self.view_func = view
+        elif isclass(view) and issubclass(view, View):
+            self.view_func = view.as_view(**self.initkwargs)
+        else:
+            raise TypeError(view)
+        logger.debug('View "%s" instantiated.' % self.path)
 
 
 class Registry:
