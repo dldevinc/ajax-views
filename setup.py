@@ -22,7 +22,7 @@ VERSION = '0.2.2'
 
 # What packages are required for this module to be executed?
 REQUIRED = [
-    'Django >= 1.8',
+    'django>1.8,<3.0',
 ]
 
 # What packages are optional?
@@ -32,6 +32,11 @@ EXTRAS = {
         'django_jinja'
     ],
 }
+
+KEYWORDS = [
+    'django',
+    'ajax',
+]
 
 # The rest you shouldn't have to touch too much :)
 # ------------------------------------------------
@@ -105,7 +110,9 @@ setup(
     author_email=EMAIL,
     python_requires=REQUIRES_PYTHON,
     url=URL,
-    packages=find_packages(exclude=["tests", "*.tests", "*.tests.*", "tests.*"]),
+    license='BSD',
+    packages=['ajax_views'],
+    package_data={},
     # If your package is a single module, use this instead of 'packages':
     # py_modules=['mypackage'],
 
@@ -114,8 +121,11 @@ setup(
     # },
     install_requires=REQUIRED,
     extras_require=EXTRAS,
+    tests_require=[
+        'tox',
+    ],
+    keywords=KEYWORDS,
     include_package_data=True,
-    license='MIT',
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Web Environment',
@@ -132,5 +142,4 @@ setup(
     cmdclass={
         'upload': UploadCommand,
     },
-    keywords='django ajax jinja2',
 )
