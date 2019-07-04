@@ -4,10 +4,10 @@ from ajax_views.registry import registry
 
 class RegistryTest(TestCase):
     def test_fbv_path(self):
-        self.assertEqual(registry['tests.simple'].path, 'tests.views.simple_duplicate_view')
+        self.assertEqual(registry['tests.simple'].path, 'tests.app.views.simple_duplicate_view')
 
     def test_cbv_path(self):
-        self.assertEqual(registry['tests.simple_cbv'].path, 'tests.views.SimpleView')
+        self.assertEqual(registry['tests.simple_cbv'].path, 'tests.app.views.SimpleView')
 
     def test_lazy_object(self):
         lazy_objects = [

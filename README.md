@@ -118,4 +118,4 @@ The usage is similar to Django, except that `ajax_url` is a global function:
 ```
 
 ## License
-Copyright (c) 2018 Mihail Mishakin Released under the MIT license (see LICENSE)
+Copyright (c) 2018 Mihail Mishakin Released under the BSD license (see LICENSE)
