@@ -111,7 +111,7 @@ setup(
     python_requires=REQUIRES_PYTHON,
     url=URL,
     license='BSD',
-    packages=['ajax_views'],
+    packages=['ajax_views', 'ajax_views.templatetags'],
     package_data={},
     # If your package is a single module, use this instead of 'packages':
     # py_modules=['mypackage'],
