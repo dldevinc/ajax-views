@@ -18,7 +18,7 @@ URL = 'https://github.com/dldevinc/ajax-views'
 EMAIL = 'x896321475@gmail.com'
 AUTHOR = 'Mihail Mishakin'
 REQUIRES_PYTHON = '>=3.4.0'
-VERSION = '0.3.1'
+VERSION = '0.3.2'
 
 # What packages are required for this module to be executed?
 REQUIRED = [
@@ -111,7 +111,7 @@ setup(
     python_requires=REQUIRES_PYTHON,
     url=URL,
     license='BSD',
-    packages=['ajax_views'],
+    packages=['ajax_views', 'ajax_views.templatetags'],
     package_data={},
     # If your package is a single module, use this instead of 'packages':
     # py_modules=['mypackage'],
