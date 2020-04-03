@@ -12,7 +12,7 @@ def simple_view(request):
 
 
 @ajax_view('tests.simple')
-def simple_duplicate_view(request):
+def simple_override_view(request):
     return HttpResponse(b'But she hears only whispers of some quiet conversation')
 
 

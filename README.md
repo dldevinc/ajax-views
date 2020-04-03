@@ -57,6 +57,15 @@ class AjaxFormView(FormView):
 ```
 **NOTE**: Each view must have a **unique** name.
 
+You can combine `ajax_view` with other decorators.
+```python
+@csrf_exempt
+@require_POST
+@ajax_view('myapp.contact_form')
+def csrf_exempt_view(request):
+    # ...
+```
+
 #### {% ajax_url %}
 ```djangotemplate
 {% load ajax_views %}
