@@ -34,10 +34,10 @@ Add `ajax_views.urls` to your URLconf:
 ```python
 urlpatterns = patterns('',
     ...
-    
+
     # Django >= 2.0
     path('ajax/', include('ajax_views.urls')),
-    
+
     # Django < 2.0
     url(r'^ajax/', include('ajax_views.urls', namespace='ajax_views')),
 )

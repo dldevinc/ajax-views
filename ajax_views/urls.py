@@ -1,7 +1,7 @@
 import django
+
 from .registry import registry
 from .views import router
-
 
 if django.VERSION >= (2, 2):
     from django.urls import URLPattern, ResolverMatch
@@ -16,14 +16,15 @@ if django.VERSION >= (2, 2):
                 if name not in registry:
                     return
                 view = registry[name]
-                return ResolverMatch(view, args, kwargs, self.pattern.name,
-                    route=str(self.pattern)
+                return ResolverMatch(
+                    view, args, kwargs, self.pattern.name, route=str(self.pattern)
                 )
-
 
     def ajax_url(route, view, kwargs=None, name=None):
         pattern = RegexPattern(route, name=name, is_endpoint=True)
         return AjaxURLPattern(pattern, view, kwargs, name)
+
+
 elif django.VERSION >= (2, 0):
     from django.urls import URLPattern, ResolverMatch
     from django.urls.resolvers import RegexPattern
@@ -39,10 +40,11 @@ elif django.VERSION >= (2, 0):
                 view = registry[name]
                 return ResolverMatch(view, args, kwargs, self.pattern.name)
 
-
     def ajax_url(route, view, kwargs=None, name=None):
         pattern = RegexPattern(route, name=name, is_endpoint=True)
         return AjaxURLPattern(pattern, view, kwargs, name)
+
+
 else:
     from django.core.urlresolvers import RegexURLPattern, ResolverMatch
 

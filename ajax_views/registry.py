@@ -1,7 +1,9 @@
 import re
-from inspect import isfunction, isclass
-from django.views.generic import View
+from inspect import isclass, isfunction
+
 from django.utils.module_loading import import_string
+from django.views.generic import View
+
 from .logging import logger
 
 name_regex = re.compile(r'[-\w.]+')
@@ -37,7 +39,7 @@ class LazyView:
 
 
 class Registry:
-    __slots__ = ('_registry', )
+    __slots__ = ('_registry',)
 
     def __init__(self):
         self._registry = {}
@@ -61,9 +63,7 @@ class Registry:
             if not name_regex.fullmatch(name):
                 raise ValueError(
                     "Invalid view name: '{}'. Names must contain only letters, "
-                    "numbers, dots (.), dashes (-) and underscores (_)".format(
-                        name
-                    )
+                    "numbers, dots (.), dashes (-) and underscores (_)".format(name)
                 )
             if name in self._registry:
                 logger.warning('view `%s` was already registered.' % name)

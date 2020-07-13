@@ -1,6 +1,8 @@
 import json
+
 from django.template import Library
 from django.utils.safestring import mark_safe
+
 from ..logging import logger
 from ..registry import registry
 
@@ -34,9 +36,7 @@ def registry_to_json():
 def do_ajax_url(name):
     if name not in registry:
         logger.warning('view `%s` is not registered' % name)
-    return reverse('ajax_views:router', kwargs={
-        'name': name
-    })
+    return reverse('ajax_views:router', kwargs={'name': name})
 
 
 @register.simple_tag(name='ajax_views_json')
@@ -52,7 +52,9 @@ if jinja2 is not None:
 
         def parse(self, parser):
             lineno = next(parser.stream).lineno
-            return nodes.CallBlock(self.call_method('_ajax_views_json'), [], [], []).set_lineno(lineno)
+            return nodes.CallBlock(
+                self.call_method('_ajax_views_json'), [], [], []
+            ).set_lineno(lineno)
 
         @staticmethod
         def _ajax_views_json(caller):

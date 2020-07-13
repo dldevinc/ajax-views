@@ -1,4 +1,5 @@
 from django.http import HttpResponseNotFound
+
 from .logging import logger
 from .registry import registry
 
