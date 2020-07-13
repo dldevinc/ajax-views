@@ -1,14 +1,14 @@
 from django.test import Client
 from ajax_views.registry import registry
-from tests.app import views
+from app import views
 
 
 def test_fbv_path():
-    assert registry['tests.simple'].path == 'tests.app.views.simple_override_view'
+    assert registry['tests.simple'].path == 'app.views.simple_override_view'
 
 
 def test_cbv_path():
-    assert registry['tests.simple_cbv'].path == 'tests.app.views.SimpleView'
+    assert registry['tests.simple_cbv'].path == 'app.views.SimpleView'
 
 
 def test_view_singleton():

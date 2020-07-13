@@ -1,9 +1,11 @@
 # ajax-views
 A simple Django application to easily use AJAX views with JavaScript.
 
+![](https://travis-ci.org/dldevinc/ajax-views.svg?branch=master)
+
 ## Compatibility
-* `django` >= 1.8
-* `python` >= 3.4
+* `django` >= 1.11
+* `python` >= 3.5
 
 ## Features
 * Ability to expose your AJAX URLs to JavaScript
@@ -126,5 +128,12 @@ The usage is similar to Django, except that `ajax_url` is a global function:
 </form>
 ```
 
-## License
-Copyright (c) 2018 Mihail Mishakin Released under the BSD license (see LICENSE)
+## Development and Testing
+After cloning the Git repository, you should install this
+in a virtualenv and set up for development:
+```shell script
+virtualenv .venv
+source .venv/bin/activate
+pip install -r ./requirements_dev.txt
+pre-commit install
+```
