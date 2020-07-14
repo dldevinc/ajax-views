@@ -1,9 +1,13 @@
 from django.http import HttpResponse
-from django.views.generic import View
+from django.views.generic import View, TemplateView
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.cache import never_cache
 from django.views.decorators.http import require_GET, require_POST
 from ajax_views.decorators import ajax_view
+
+
+class IndexView(TemplateView):
+    template_name = 'app/index.html'
 
 
 @ajax_view('tests.simple')
