@@ -1,8 +1,11 @@
-from django.urls import path
+try:
+    from django.urls import re_path
+except:
+    from django.conf.urls import url as re_path
 from .views import IndexView
 
 
 app_name = 'app'
 urlpatterns = [
-    path('', IndexView.as_view()),
+    re_path(r'^$', IndexView.as_view()),
 ]
