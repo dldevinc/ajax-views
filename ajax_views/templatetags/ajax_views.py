@@ -1,4 +1,5 @@
 import json
+from typing import Any, Dict
 
 from django.template import Library
 from django.utils.safestring import mark_safe
@@ -21,7 +22,7 @@ register = Library()
 
 
 def registry_to_json():
-    data = {}
+    data = {}  # type: Dict[str, Any]
     for name in registry:
         target = data
         path, _, key = name.rpartition('.')
@@ -45,7 +46,8 @@ def ajax_views_json():
 
 
 if jinja2 is not None:
-    from jinja2.ext import Extension, nodes
+    from jinja2 import nodes
+    from jinja2.ext import Extension
 
     class AjaxViewsExtension(Extension):
         tags = {'ajax_views_json'}

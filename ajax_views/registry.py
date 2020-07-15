@@ -1,5 +1,6 @@
 import re
 from inspect import isclass, isfunction
+from typing import Callable, Dict, Iterable, Optional, Union
 
 from django.utils.module_loading import import_string
 from django.views.generic import View
@@ -12,37 +13,38 @@ name_regex = re.compile(r'[-\w.]+')
 class LazyView:
     __slots__ = ('path', 'initkwargs', 'view_func')
 
-    def __init__(self, view_path, **initkwargs):
+    def __init__(self, view_path: str, **initkwargs):
         self.path = view_path
         self.initkwargs = initkwargs
-        self.view_func = None
+        self.view_func = None  # type: Optional[Callable]
 
     def __getattr__(self, item):
         if self.view_func is None:
-            self._resolve()
+            self.view_func = self._resolve()
+            logger.debug('View "%s" instantiated.' % self.path)
         return getattr(self.view_func, item)
 
     def __call__(self, *args, **kwargs):
         if self.view_func is None:
-            self._resolve()
+            self.view_func = self._resolve()
+            logger.debug('View "%s" instantiated.' % self.path)
         return self.view_func(*args, **kwargs)
 
-    def _resolve(self):
+    def _resolve(self) -> Callable:
         view = import_string(self.path)
         if isfunction(view):
-            self.view_func = view
+            return view
         elif isclass(view) and issubclass(view, View):
-            self.view_func = view.as_view(**self.initkwargs)
+            return view.as_view(**self.initkwargs)
         else:
             raise TypeError(view)
-        logger.debug('View "%s" instantiated.' % self.path)
 
 
 class Registry:
     __slots__ = ('_registry',)
 
     def __init__(self):
-        self._registry = {}
+        self._registry = {}  # type: Dict[str, Callable]
 
     def __iter__(self):
         return iter(self._registry)
@@ -50,7 +52,9 @@ class Registry:
     def __getitem__(self, item):
         return self._registry[item]
 
-    def register(self, names, view, **initkwargs):
+    def register(
+        self, names: Union[str, Iterable], view: Union[Callable, View], **initkwargs
+    ):
         """
         :type names: str | list | tuple
         :type view: types.FunctionType | django.views.generic.View
