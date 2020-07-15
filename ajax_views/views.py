@@ -4,7 +4,7 @@ from .logging import logger
 from .registry import registry
 
 
-def router(request, name, *args, **kwargs):
+def router(request, name: str, *args, **kwargs):
     try:
         view = registry[name]
     except KeyError:
