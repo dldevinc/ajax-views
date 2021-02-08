@@ -7,8 +7,8 @@ python:
 - 3.5
 
 before_install:
-- pip install twine
 - pip install -U pip setuptools wheel tox-travis
+- pip install twine
 - pip install -r ./requirements_dev.txt
 
 branches:
