@@ -1,1 +1,7 @@
+{% load ajax_views %}
+
 <h1>Index page</h1>
+
+<script>
+    window.ajax_views = {% ajax_views_json %};
+</script>
