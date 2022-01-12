@@ -45,7 +45,7 @@ urlpatterns = patterns('',
 ```
 
 ## Usage
-#### @ajax_view
+#### @ajax_view('name')
 Use this decorator to register your views (Function-Based or Class-Based).
 ```python
 from ajax_views.decorators import ajax_view
@@ -58,9 +58,10 @@ def form_view(request):
 class AjaxFormView(FormView):
     ...
 ```
-**NOTE**: Each view must have a **unique** name.
+**NOTE**: The specified name has to be unique.
 
-You can combine `ajax_view` with other decorators.
+You can combine `ajax_view` with other decorators:
+
 ```python
 @csrf_exempt
 @require_POST
@@ -69,17 +70,9 @@ def csrf_exempt_view(request):
     # ...
 ```
 
-#### {% ajax_url %}
-```djangotemplate
-{% load ajax_views %}
-
-<form action="{% ajax_url 'myapp.form' %}" method="post">
-    ...
-</form>
-```
-
 #### {% ajax_views_json %}
-Template tag to render registered URLs as JSON.
+Template tag to output registered URLs as JSON.
+
 ```djangotemplate
 {% load ajax_views %}
 
@@ -88,6 +81,8 @@ Template tag to render registered URLs as JSON.
 </script>
 ```
 
+Now you can use the declared object to refer to the corresponding urls like this:
+
 ```javascript
 $.ajax({
     url: window.ajax_views.myapp.form,
@@ -95,7 +90,20 @@ $.ajax({
 });
 ```
 
-#### Multiple names for the same view
+#### {% ajax_url 'name' %}
+This tag is used to add AJAX URLs in the template files:
+
+```djangotemplate
+{% load ajax_views %}
+
+<form action="{% ajax_url 'myapp.form' %}" method="post">
+    ...
+</form>
+```
+
+#### Multiple names
+You can have multiple names for same view:
+
 ```python
 from ajax_views.decorators import ajax_view
 
@@ -112,7 +120,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.jinja2.Jinja2',
         'OPTIONS': {
             'extensions': [
-                ...
+                # ...
                 'ajax_views.templatetags.ajax_views.AjaxViewsExtension',
             ]
         }
