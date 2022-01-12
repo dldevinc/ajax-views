@@ -4,7 +4,7 @@ from .registry import registry
 from .views import router
 
 if django.VERSION >= (2, 2):  # noqa
-    from django.urls import URLPattern, ResolverMatch
+    from django.urls import ResolverMatch, URLPattern
     from django.urls.resolvers import RegexPattern
 
     class AjaxURLPattern(URLPattern):
@@ -26,7 +26,7 @@ if django.VERSION >= (2, 2):  # noqa
 
 
 elif django.VERSION >= (2, 0):
-    from django.urls import URLPattern, ResolverMatch
+    from django.urls import ResolverMatch, URLPattern
     from django.urls.resolvers import RegexPattern
 
     class AjaxURLPattern(URLPattern):  # type: ignore
