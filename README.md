@@ -135,6 +135,6 @@ in a virtualenv and set up for development:
 ```shell script
 virtualenv .venv
 source .venv/bin/activate
-pip install -r ./requirements_dev.txt
+pip install -r ./requirements.txt
 pre-commit install
 ```
