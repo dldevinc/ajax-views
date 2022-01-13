@@ -2,7 +2,8 @@
 A simple Django application to easily use AJAX views with JavaScript.
 
 [![PyPI](https://img.shields.io/pypi/v/ajax-views.svg)](https://pypi.org/project/ajax-views/)
-[![Build Status](https://travis-ci.org/dldevinc/ajax-views.svg?branch=master)](https://travis-ci.org/dldevinc/ajax-views)
+[![Build Status](https://github.com/dldevinc/ajax-views/actions/workflows/tests.yml/badge.svg)](https://github.com/dldevinc/ajax-views)
+[![Software license](https://img.shields.io/pypi/l/ajax-views.svg)](https://pypi.org/project/ajax-views/)
 
 ## Compatibility
 * `django` >= 1.11
