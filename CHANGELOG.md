@@ -1,5 +1,9 @@
 # Change Log
 
+## [0.5.0](https://github.com/dldevinc/ajax-views/tree/v0.5.0) - 2022-05-28
+### ⚠ BREAKING CHANGES
+- Dropped support for Python 3.5.
+
 ## [0.4.1](https://github.com/dldevinc/ajax-views/tree/v0.4.1) - 2021-02-08
 - Add typing
 - Improve tests
