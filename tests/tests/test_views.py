@@ -1,6 +1,5 @@
 import django
 from django.test import Client
-from app import views
 
 
 def test_404():

@@ -1,6 +1,5 @@
 from django.test import Client
 from ajax_views.registry import registry
-from app import views
 
 
 def test_fbv_path():
