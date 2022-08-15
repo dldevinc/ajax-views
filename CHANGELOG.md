@@ -1,5 +1,9 @@
 # Change Log
 
+## [0.6.0](https://github.com/dldevinc/ajax-views/tree/v0.6.0) - 2022-08-15
+### Features
+- Added support for Django 4.1.
+
 ## [0.5.0](https://github.com/dldevinc/ajax-views/tree/v0.5.0) - 2022-05-28
 ### ⚠ BREAKING CHANGES
 - Dropped support for Python 3.5.
