@@ -7,7 +7,6 @@ if django.VERSION >= (4, 1):  # noqa
     from django.urls import ResolverMatch, URLPattern
     from django.urls.resolvers import RegexPattern
 
-
     class AjaxURLPattern(URLPattern):
         def resolve(self, path):
             match = self.pattern.match(path)
@@ -30,7 +29,6 @@ if django.VERSION >= (4, 1):  # noqa
                     captured_kwargs=captured_kwargs,
                     extra_kwargs=self.default_args,
                 )
-
 
     def ajax_url(regex, view, kwargs=None, name=None):
         pattern = RegexPattern(regex, name=name, is_endpoint=True)
