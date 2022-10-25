@@ -2,7 +2,6 @@ include LICENSE
 include *.md
 
 graft ajax_views
-prune tests
 global-exclude .git*
 global-exclude __pycache__
 global-exclude *.py[co]
