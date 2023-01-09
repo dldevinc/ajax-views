@@ -114,7 +114,7 @@ This tag is used to add AJAX URLs in the template files:
 
 #### Multiple names
 
-You can have multiple names for same view:
+You can have multiple names for the same view:
 
 ```python
 from ajax_views.decorators import ajax_view
