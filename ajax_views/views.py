@@ -8,7 +8,7 @@ def router(request, name: str, *args, **kwargs):
     try:
         view = registry[name]
     except KeyError:
-        logger.debug('Resolving "%s"...' % name)
+        logger.debug("Resolving '%s'..." % name)
         return HttpResponseNotFound()
     else:
         return view(request, *args, **kwargs)
