@@ -3,5 +3,5 @@ from django.utils.translation import gettext_lazy as _
 
 
 class Config(AppConfig):
-    name = 'ajax_views'
-    verbose_name = _('AJAX Views')
+    name = "ajax_views"
+    verbose_name = _("AJAX Views")

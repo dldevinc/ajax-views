@@ -8,8 +8,8 @@ A simple Django application to easily use AJAX views with JavaScript.
 
 ## Compatibility
 
--   `django` >= 1.11
--   `python` >= 3.6
+-   `django` >= 3.2
+-   `python` >= 3.7
 
 ## Features
 
@@ -30,39 +30,36 @@ Add it to your `INSTALLED_APPS` list:
 
 ```python
 INSTALLED_APPS = (
-    ...
-    'ajax_views',
+    # ...
+    "ajax_views",
+    # ...
 )
 ```
 
 Add `ajax_views.urls` to your URLconf:
 
 ```python
-urlpatterns = patterns('',
-    ...
+from django.urls import include, path
 
-    # Django >= 2.0
-    path('ajax/', include('ajax_views.urls')),
-
-    # Django < 2.0
-    url(r'^ajax/', include('ajax_views.urls', namespace='ajax_views')),
-)
+urlpatterns = [
+    path("ajax/", include("ajax_views.urls")),
+]
 ```
 
 ## Usage
 
-#### @ajax_view('name')
+#### @ajax_view("name")
 
 Use this decorator to register your views (Function-Based or Class-Based).
 
 ```python
 from ajax_views.decorators import ajax_view
 
-@ajax_view('myapp.form')
+@ajax_view("myapp.form")
 def form_view(request):
     ...
 
-@ajax_view('myapp.form_cbv')
+@ajax_view("myapp.form_cbv")
 class AjaxFormView(FormView):
     ...
 ```
@@ -74,7 +71,7 @@ You can combine `ajax_view` with other decorators:
 ```python
 @csrf_exempt
 @require_POST
-@ajax_view('myapp.contact_form')
+@ajax_view("myapp.contact_form")
 def csrf_exempt_view(request):
     # ...
 ```
@@ -119,7 +116,7 @@ You can have multiple names for the same view:
 ```python
 from ajax_views.decorators import ajax_view
 
-@ajax_view(['myapp.form', 'myapp.fallback'])
+@ajax_view(["myapp.form", "myapp.fallback"])
 def example_view(request):
     ...
 ```
@@ -131,11 +128,11 @@ Enable Jinja2 extension
 ```python
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.jinja2.Jinja2',
-        'OPTIONS': {
-            'extensions': [
+        "BACKEND": "django.template.backends.jinja2.Jinja2",
+        "OPTIONS": {
+            "extensions": [
                 # ...
-                'ajax_views.templatetags.ajax_views.AjaxViewsExtension',
+                "ajax_views.templatetags.ajax_views.AjaxViewsExtension",
             ]
         }
     }
