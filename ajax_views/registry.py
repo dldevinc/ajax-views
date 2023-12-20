@@ -7,7 +7,7 @@ from django.views.generic import View
 
 from .logging import logger
 
-name_regex = re.compile(r'[-\w.]+')
+name_regex = re.compile(r"[-\w.]+")
 
 
 class LazyView:
