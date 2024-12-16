@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ajax-views"
-version = "0.8.0"
+version = "0.8.1"
 description = "A simple Django application to easily use AJAX views with JavaScript."
 authors = ["Mihail Mishakin <x896321475@gmail.com>"]
 maintainers = ["Mihail Mishakin <x896321475@gmail.com>"]
