@@ -1,6 +1,6 @@
 import re
 from inspect import isclass, isfunction
-from typing import Callable, Dict, Iterable, Optional, Union
+from typing import Callable, Iterable, Optional, Union
 
 from django.utils.module_loading import import_string
 from django.views.generic import View
@@ -16,7 +16,7 @@ class LazyView:
     def __init__(self, view_path: str, **initkwargs):
         self.path = view_path
         self.initkwargs = initkwargs
-        self.view_func = None  # type: Optional[Callable]
+        self.view_func: Optional[Callable] = None
 
     def __getattr__(self, item):
         if self.view_func is None:
@@ -44,7 +44,7 @@ class Registry:
     __slots__ = ("_registry",)
 
     def __init__(self):
-        self._registry = {}  # type: Dict[str, Callable]
+        self._registry = {}  # type: dict[str, Callable]
 
     def __iter__(self):
         return iter(self._registry)
@@ -68,7 +68,7 @@ class Registry:
             if name in self._registry:
                 logger.warning("view `%s` was already registered." % name)
 
-        view_path = '.'.join((view.__module__, view.__qualname__))
+        view_path = ".".join((view.__module__, view.__qualname__))
         lazy_view = LazyView(view_path, **initkwargs)
 
         # assigning by reference

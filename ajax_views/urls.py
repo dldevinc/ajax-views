@@ -6,6 +6,7 @@ from .registry import registry
 from .views import router
 
 if django.VERSION >= (4, 1):  # noqa
+
     class AjaxURLPattern(URLPattern):
         def resolve(self, path):
             match = self.pattern.match(path)
@@ -32,7 +33,9 @@ if django.VERSION >= (4, 1):  # noqa
     def ajax_url(regex, view, kwargs=None, name=None):
         pattern = RegexPattern(regex, name=name, is_endpoint=True)
         return AjaxURLPattern(pattern, view, kwargs, name)
+
 else:
+
     class AjaxURLPattern(URLPattern):
         def resolve(self, path):
             match = self.pattern.match(path)

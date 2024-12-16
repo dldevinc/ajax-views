@@ -1,3 +1,3 @@
 import logging
 
-logger = logging.getLogger("ajax_views")
+logger = logging.getLogger("ajax-views")

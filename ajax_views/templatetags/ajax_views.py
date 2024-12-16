@@ -1,5 +1,5 @@
 import json
-from typing import Any, Dict
+from typing import Any
 
 from django.template import Library
 from django.urls import reverse
@@ -18,12 +18,12 @@ register = Library()
 
 
 def registry_to_json():
-    data = {}  # type: Dict[str, Any]
+    data: dict[str, Any] = {}
     for name in registry:
         target = data
-        path, _, key = name.rpartition('.')
+        path, _, key = name.rpartition(".")
         if path:
-            for part in path.split('.'):
+            for part in path.split("."):
                 target = target.setdefault(part, {})
         target[key] = reverse("ajax_views:router", args=[name])
     return json.dumps(data)

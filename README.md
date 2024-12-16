@@ -9,7 +9,7 @@ A simple Django application to easily use AJAX views with JavaScript.
 ## Compatibility
 
 -   `django` >= 3.2
--   `python` >= 3.7
+-   `python` >= 3.9
 
 ## Features
 

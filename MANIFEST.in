@@ -1,7 +1,0 @@
-include LICENSE
-include *.md
-
-graft ajax_views
-global-exclude .git*
-global-exclude __pycache__
-global-exclude *.py[co]
