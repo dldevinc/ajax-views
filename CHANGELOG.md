@@ -1,5 +1,9 @@
 # Change Log
 
+## [0.8.0](https://github.com/dldevinc/ajax-views/tree/v0.8.1) - 2024-12-16
+
+-   Fixed file permissions.
+
 ## [0.8.0](https://github.com/dldevinc/ajax-views/tree/v0.8.0) - 2024-12-16
 
 ### ⚠ BREAKING CHANGES
