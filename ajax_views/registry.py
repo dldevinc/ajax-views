@@ -44,7 +44,7 @@ class Registry:
     __slots__ = ("_registry",)
 
     def __init__(self):
-        self._registry = {}  # type: dict[str, Callable]
+        self._registry: dict[str, Callable] = {}
 
     def __iter__(self):
         return iter(self._registry)

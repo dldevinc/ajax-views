@@ -42,4 +42,4 @@ def pytest(session, django):
     session.run_install("poetry", "install", "--with", "pytest")
     session.run_install("poetry", "run", "pip", "install", f"django~={django}.0")
     session.run("poetry", "run", "python3", "manage.py", "migrate")
-    session.run("poetry", "run", "pytest", "--cov")
+    session.run("poetry", "run", "pytest", "--cov", *session.posargs)

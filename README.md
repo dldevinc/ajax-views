@@ -148,15 +148,3 @@ The usage is similar to Django, except that `ajax_url` is a global function:
     ...
 </form>
 ```
-
-## Development and Testing
-
-After cloning the Git repository, you should install this
-in a virtualenv and set up for development:
-
-```shell script
-virtualenv .venv
-source .venv/bin/activate
-pip install -r ./requirements.txt
-pre-commit install
-```
